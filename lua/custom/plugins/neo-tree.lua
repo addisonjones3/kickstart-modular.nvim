@@ -19,6 +19,16 @@ return {
         position = 'right',
       },
       filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_gotfiles = false,
+          hide_by_name = {},
+          never_show = {
+            '.git',
+            '.DS_Store',
+          },
+        },
+        hijack_netrw_behavior = 'open_current',
         window = {
           mappings = {
             ['<leader>e'] = 'close_window',

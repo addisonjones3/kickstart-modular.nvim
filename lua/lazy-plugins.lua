@@ -65,6 +65,16 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   {
     require 'custom.plugins.neo-tree',
+
+    require 'custom.plugins.themes.github-dark',
+
+    require 'custom.plugins.vim-surround',
+
+    require 'custom.plugins.vim-commentary',
+
+    require 'custom.plugins.lua-line',
+
+    -- require 'custom.plugins.harpoon',
   },
 }, {
   ui = {
