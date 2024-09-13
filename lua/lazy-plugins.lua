@@ -74,6 +74,8 @@ require('lazy').setup({
 
     require 'custom.plugins.lua-line',
 
+    require 'custom.plugins.git-blame',
+
     -- require 'custom.plugins.harpoon',
   },
 }, {
