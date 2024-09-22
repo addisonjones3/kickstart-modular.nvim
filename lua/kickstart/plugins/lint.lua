@@ -5,8 +5,25 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+      local gcilint = require('lint').linters.golangcilint
+      gcilint.args = {
+        'run',
+        '-c',
+        '/Users/aj185259/NCR/edge-infra/hack/tools/linters/golangcilint.yaml',
+        '--out-format',
+        'json',
+        '--show-stats=false',
+        '--print-issued-lines=false',
+        '--print-linter-name=false',
+        '--fast',
+        function()
+          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
+        end
+      }
+
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        go = { 'golangcilint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -50,6 +67,9 @@ return {
           lint.try_lint()
         end,
       })
+      vim.keymap.set('n', '<leader>li', function()
+        lint.try_lint()
+      end, { desc = 'Trigger linting for current file' })
     end,
   },
 }
