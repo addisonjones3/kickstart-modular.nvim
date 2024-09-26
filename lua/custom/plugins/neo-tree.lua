@@ -41,7 +41,6 @@ return {
         end
       end,
     })
-    -- keymaps
   end,
   keys = {
     { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
