@@ -77,6 +77,18 @@ return {
           --  To jump back, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+          local goto_def_vsplit = function()
+            require('telescope.builtin').lsp_definitions { jump_type = 'vsplit' }
+            for key, value in pairs(vim.api.nvim_list_wins()) do
+              print(key)
+              print(value)
+            end
+            print(vim.inspect(vim.api.nvim_list_wins()))
+            require('telescope.builtin').lsp_definitions {}
+          end
+
+          map('gv', goto_def_vsplit, '[G]oto [D]efinition')
+
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
@@ -179,6 +191,7 @@ return {
           },
         },
         goimports = {},
+        sqlfluff = {},
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
