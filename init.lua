@@ -110,4 +110,5 @@ require 'lazy-plugins'
 
 -- Final settings
 vim.cmd.colorscheme 'tokyonight-storm'
+-- vim.cmd.colorscheme 'github_dark'
 vim.o.colorcolumn = '88'
