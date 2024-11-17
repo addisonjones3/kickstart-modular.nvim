@@ -77,6 +77,10 @@ require('lazy').setup({
     require 'custom.plugins.git-blame',
 
     require 'custom.plugins.markdown-preview',
+
+    -- require 'custom.plugins.quick-scope',
+
+    require 'custom.plugins.hop',
   },
 }, {
   ui = {
