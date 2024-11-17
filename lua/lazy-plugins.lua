@@ -78,7 +78,7 @@ require('lazy').setup({
 
     require 'custom.plugins.markdown-preview',
 
-    -- require 'custom.plugins.quick-scope',
+    require 'custom.plugins.trouble',
 
     require 'custom.plugins.hop',
   },
