@@ -8,7 +8,7 @@ return {
       require('lint').linters.golangcilint.args = {
         'run',
         '-c',
-        '/Users/aj185259/NCR/edge-infra/hack/tools/linters/golangcilint.yaml',
+        os.getenv 'GOLANGCILINT_FILE',
         '--out-format',
         'json',
         '--show-stats=false',
@@ -32,6 +32,7 @@ return {
         sql = { 'sqlfluff' },
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
+        bzl = { 'buildifier' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

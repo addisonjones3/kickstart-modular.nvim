@@ -10,7 +10,7 @@ return {
       keys = 'etovxqpdygfblzhckisuran',
     }
 
-    vim.keymap.set('n', '<leader>fw', hop.hint_words, { desc = 'HopWord' })
+    vim.keymap.set('n', '<leader>w', hop.hint_words, { desc = 'HopWord' })
     vim.keymap.set('n', '<leader>fn', '<cmd>HopNodes<CR>', { desc = 'HopNodes' })
     vim.keymap.set('', 'f', function()
       hop.hint_char1 { direction = directions.AFTER_CURSOR, current_line_only = true }

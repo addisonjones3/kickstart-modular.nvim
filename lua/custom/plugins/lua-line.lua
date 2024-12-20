@@ -3,6 +3,9 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
+      local function window()
+        return vim.api.nvim_win_get_number(0)
+      end
       require('lualine').setup {
         options = {
           refresh = {
@@ -18,6 +21,7 @@ return {
           -- lualine_z = { 'tabs' },
         },
         inactive_sections = {
+          lualine_a = { { window, color = { fg = '#26ffbb', bg = '#282828' } } },
           lualine_c = { { 'filename', path = 1 } },
         },
         tabline = {

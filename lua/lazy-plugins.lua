@@ -80,6 +80,8 @@ require('lazy').setup({
 
     require 'custom.plugins.trouble',
 
+    require 'custom.plugins.quick-scope',
+
     require 'custom.plugins.hop',
   },
 }, {
