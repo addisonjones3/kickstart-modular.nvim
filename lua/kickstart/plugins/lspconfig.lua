@@ -181,6 +181,7 @@ return {
       local servers = {
         -- clangd = {},
         gopls = {
+          filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           settings = {
             gopls = {
               analyses = {

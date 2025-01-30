@@ -83,6 +83,8 @@ require('lazy').setup({
     require 'custom.plugins.quick-scope',
 
     require 'custom.plugins.hop',
+
+    require 'custom.plugins.d2-vim',
   },
 }, {
   ui = {
