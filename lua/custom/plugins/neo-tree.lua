@@ -44,6 +44,7 @@ return {
   end,
   keys = {
     { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>E', ':Neotree close<CR>', desc = 'NeoTree close', silent = true },
   },
   config = function()
     require('neo-tree').setup {

@@ -37,6 +37,7 @@ return {
         go = { 'goimports' },
         bazel = { 'buildifier' },
         bzl = { 'buildifier' },
+        json = { 'jq' },
         WORKSPACE = { 'buildifier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
