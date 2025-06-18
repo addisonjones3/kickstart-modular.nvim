@@ -64,6 +64,8 @@ require('lazy').setup({
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   {
+    require 'custom.plugins.fzf',
+
     require 'custom.plugins.neo-tree',
 
     require 'custom.plugins.themes.github-dark',
@@ -75,8 +77,6 @@ require('lazy').setup({
     require 'custom.plugins.lua-line',
 
     require 'custom.plugins.git-blame',
-
-    require 'custom.plugins.markdown-preview',
 
     require 'custom.plugins.trouble',
 
