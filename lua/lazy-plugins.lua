@@ -66,9 +66,13 @@ require('lazy').setup({
   {
     require 'custom.plugins.fzf',
 
+    require 'custom.plugins.harpoon',
+
     require 'custom.plugins.neo-tree',
 
     require 'custom.plugins.themes.github-dark',
+
+    require 'custom.plugins.themes.catpuccin',
 
     require 'custom.plugins.vim-surround',
 

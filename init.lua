@@ -109,7 +109,8 @@ require 'lazy-plugins'
 -- vim: ts=2 sts=2 sw=2 et
 
 -- Final settings
-vim.cmd.colorscheme 'tokyonight-storm'
+vim.cmd.colorscheme 'catppuccin-macchiato'
+-- vim.cmd.colorscheme 'tokyonight-storm'
 -- vim.cmd.colorscheme 'github_dark'
 vim.o.colorcolumn = '88'
 -- vim.o.tabstop = 4
