@@ -1,3 +1,5 @@
+local buildifier_table = {}
+
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -33,8 +35,9 @@ return {
         }
       end,
       formatters_by_ft = {
+        c = { 'clang_format' },
         lua = { 'stylua' },
-        go = { 'goimports', 'gofmt' },
+        -- go = { 'goimports', 'gofmt' },
         bazel = { 'buildifier' },
         bzl = { 'buildifier' },
         json = { 'jq' },
@@ -48,6 +51,9 @@ return {
       formatters = {
         goimports = {
           prepend_args = { '-local', 'edge-infra.dev' },
+        },
+        clang_format = {
+          prepend_args = { '--style=file', '--fallback-style=LLVM' },
         },
       },
     },

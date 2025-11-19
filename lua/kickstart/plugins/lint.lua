@@ -5,20 +5,20 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
-      require('lint').linters.golangcilint.args = {
-        'run',
-        '-c',
-        os.getenv 'GOLANGCILINT_FILE',
-        '--out-format',
-        'json',
-        '--show-stats=false',
-        '--print-issued-lines=false',
-        '--print-linter-name=false',
-        '--fast',
-        function()
-          return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
-        end,
-      }
+      -- require('lint').linters.golangcilint.args = {
+      --   'run',
+      --   '-c',
+      --   os.getenv 'GOLANGCILINT_FILE',
+      --   '--out-format',
+      --   'json',
+      --   '--show-stats=false',
+      --   '--print-issued-lines=false',
+      --   '--print-linter-name=false',
+      --   '--fast',
+      --   function()
+      --     return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')
+      --   end,
+      -- }
 
       -- v2
       -- require('lint').linters.golangcilint.args = {
@@ -52,7 +52,7 @@ return {
       -- }
 
       lint.linters_by_ft = {
-        go = { 'golangcilint' },
+        -- go = { 'golangcilint' },
         -- sql = { 'sqlfluff' },
         sh = { 'shellcheck' },
         bash = { 'shellcheck' },
