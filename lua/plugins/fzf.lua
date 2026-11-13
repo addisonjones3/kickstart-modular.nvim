@@ -1,0 +1,34 @@
+local fzf = require 'fzf-lua'
+local fzf_actions = require 'fzf-lua.actions'
+
+fzf.setup {
+  keymap = {
+    fzf = {
+      ['ctrl-d'] = 'half-page-down',
+      ['ctrl-u'] = 'half-page-up',
+    },
+  },
+  actions = {
+    files = {
+      ['enter'] = fzf_actions.file_edit_or_qf,
+      ['ctrl-s'] = fzf_actions.file_split,
+      ['ctrl-v'] = fzf_actions.file_vsplit,
+    },
+  },
+  oldfiles = {
+    cwd_only = true,
+  },
+}
+
+vim.keymap.set('n', '<leader>sf', fzf.files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sb', fzf.buffers, { desc = '[S]earch existing [B]uffers' })
+vim.keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>s.', fzf.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+vim.keymap.set('n', '<leader>/', fzf.lgrep_curbuf, { desc = '[S]earch in current buffer' })
+vim.keymap.set('n', '<leader>s/', fzf.lines, { desc = '[S]earch open buffer lines' })
+vim.keymap.set('n', '<leader>sr', function()
+  fzf.live_grep { resume = true }
+end, { desc = '[S]earch [R]esume' })
+
+-- vim: ts=2 sts=2 sw=2 et
