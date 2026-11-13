@@ -196,7 +196,7 @@ return {
             },
           },
         },
-        goimports = {},
+        -- goimports = {},
         sqlfluff = {},
         shellcheck = {
           filetypes = { 'sh', 'bash', 'zsh' },
@@ -204,8 +204,18 @@ return {
         starpls = {
           filetypes = { 'bzl', 'WORKSPACE', 'bazel' },
         },
-        -- pyright = {},
-        -- rust_analyzer = {},
+        basedpyright = {},
+        rust_analyzer = {
+          settings = {
+            ['rust-analyzer'] = {
+              checkOnSave = true,
+              check = {
+                allFeatures = true,
+                command = 'clippy',
+              },
+            },
+          },
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -249,18 +259,11 @@ return {
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
-      }
+      for name, cfg in pairs(servers) do
+        cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+        vim.lsp.config(name, cfg)
+      end
+      require('mason-lspconfig').setup { automatic_enable = true }
     end,
   },
 }

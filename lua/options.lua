@@ -21,6 +21,30 @@ vim.opt.showmode = false
 --  See `:help 'clipboard'`
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
+
+  -- When running over SSH (e.g. on a remote EC2 host), there is no local
+  -- clipboard to write to. Use OSC 52 so yanks are sent through the terminal
+  -- to the clipboard of the machine running your terminal emulator.
+  --  See `:help clipboard-osc52`. Requires a terminal that supports OSC 52.
+  if vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
+    local osc52 = require 'vim.ui.clipboard.osc52'
+    -- Paste from the regular register instead of querying the terminal, which
+    -- many emulators do not support and which can cause `p` to hang.
+    local function paste()
+      return { vim.fn.split(vim.fn.getreg '', '\n'), vim.fn.getregtype '' }
+    end
+    vim.g.clipboard = {
+      name = 'OSC 52',
+      copy = {
+        ['+'] = osc52.copy '+',
+        ['*'] = osc52.copy '*',
+      },
+      paste = {
+        ['+'] = paste,
+        ['*'] = paste,
+      },
+    }
+  end
 end)
 
 -- Enable break indent
@@ -64,5 +88,8 @@ vim.opt.scrolloff = 10
 
 -- Wrapping
 vim.wo.wrap = false
+
+-- Disable swapfile
+vim.o.swapfile = false
 
 -- vim: ts=2 sts=2 sw=2 et

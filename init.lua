@@ -116,6 +116,8 @@ vim.o.colorcolumn = '88'
 -- vim.o.tabstop = 4
 -- vim.o.shiftwidth = 4
 
+vim.cmd 'filetype plugin indent on'
+
 -- Neovide
 if vim.g.neovide then
   vim.o.guifont = 'MesloLGS NF'
