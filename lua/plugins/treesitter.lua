@@ -17,6 +17,7 @@ ts.install {
   'markdown',
   'markdown_inline',
   'query',
+  'rust',
   'vim',
   'vimdoc',
 }
